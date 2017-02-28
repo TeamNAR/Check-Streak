@@ -2117,6 +2117,57 @@
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
 	}
+	
+	
+	
+/* About*/
+	
+	/* Intro1 */
+
+	#intro1 {
+		background: url("images/overlay.png"), url("../../images/intro1.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, bottom center;
+		background-repeat: repeat, no-repeat;
+	}
+
+	/* One1 */
+
+	#one1 {
+		background: url("images/overlay.png"), url("../../images/one1.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+	/* Two1 */
+
+	#two1 {
+		background: url("images/overlay.png"), url("../../images/two1.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+	
+	/* Remember */
+
+	#remember {
+		background: url("images/overlay.png"), url("../../images/remember.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+	/* Quote */
+
+	#quote {
+		background: url("images/overlay.png"), url("../../images/quote.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+
 
 /* Contact */
 
