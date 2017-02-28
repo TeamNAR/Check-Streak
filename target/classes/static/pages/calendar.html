@@ -13,16 +13,6 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		
-		<link rel="stylesheet" href="../assets/css/monthly.css">
-		<style type="text/css">
-		#mycalendar {
-			width: 100%;
-			margin: 2em auto 0 auto;
-			max-width: 80em;
-			border: 1px solid #666;
-		}
-	</style>
 	</head>
 	<body>
 
@@ -42,13 +32,12 @@
 			</header>
 
 		<!-- Intro -->
-			<section id="intro" class="main style1 dark fullscreen" style="margin-top: 0">
-				<div class="monthly" id="mycalendar" style="margin-top: 0"></div>
-
-				
-				<!-- <div class="content">
-					<div class="monthly" id="mycalendar"></div>
-				</div>-->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content">
+					<header>
+						<h2>Calendar here.</h2>
+					</header>
+				</div>
 			</section>
 			
 		<!-- Footer -->
@@ -69,45 +58,6 @@
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
-
-			<script type="text/javascript" src="../assets/js/jquery.js"></script>
-			<script type="text/javascript" src="../assets/js/monthly.js"></script>
-			<script type="text/javascript">
-			
-				var sampleEvents = {
-				"monthly": [
-					{
-					"id": 1,
-					"name": "TEST1",
-					"startdate": "2017-01-04",
-					"enddate": "",
-					"starttime": "12:00",
-					"endtime": "2:00",
-					"color": "#99CCCC",
-					"url": ""
-					},
-					{
-					"id": 2,
-					"name": "TEST2",
-					"startdate": "2017-01-29",
-					"enddate": "2017-02-02",
-					"starttime": "12:00",
-					"endtime": "2:00",
-					"color": "#CC99CC",
-					"url": ""
-					}
-				]
-				};
-			
-				$(window).load( function() {
-					$('#mycalendar').monthly({
-						mode: 'event',
-						dataType: 'json',
-						events: sampleEvents
-					});
-				});
-			</script>
-			
 
 	</body>
 </html>

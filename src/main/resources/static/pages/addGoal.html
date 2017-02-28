@@ -13,8 +13,10 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<link rel="stylesheet" href="../assets/css/monthly.css">
+		
 	</head>
-	<body>
+	<body ng-controller="GoalCtrl">
 
 		<!-- Header -->
 			<header id="header">
@@ -34,9 +36,31 @@
 		<!-- Intro -->
 			<section id="intro" class="main style1 dark fullscreen">
 				<div class="content">
-					<header>
-						<h2>AddGoal form here</h2>
-					</header>
+					
+					Goal <input type="text" ng-model="goal">
+					<br>
+					Start Date
+					<div style="display:inline-block; width:250px;">
+						<input type="text" id="mytarget" value="Select Date">
+						<div class="monthly" id="mycalendar2"></div>
+					</div>
+					
+					<br>
+					End Date
+					<div style="display:inline-block; width:250px;">
+						<input type="text" id="mytarget" value="Select Date">
+						<div class="monthly" id="mycalendar2"></div>
+					</div>
+					<br>
+					Color
+					<div style="display:inline-block; width:250px;">
+						<input class="jscolor" value="ab2567" style="width:250px; align-self: right">
+					</div>
+					
+					<hr>
+					<br><button ng-click="addGoal()">Add Goal</button>
+				      
+
 				</div>
 			</section>
 			
@@ -58,6 +82,37 @@
 			<script src="../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../assets/js/main.js"></script>
+			<script type="text/javascript" src="../assets/js/jquery.js"></script>
+			<script type="text/javascript" src="../assets/js/monthly.js"></script>
+			<script src="../assets/js/jscolor.js"></script>
+			
+			<script type="text/javascript">
+				$(window).load( function() {
+					$('#mycalendar').monthly({
+						mode: 'event',
+						//jsonUrl: 'events.json',
+						//dataType: 'json'
+						xmlUrl: 'events.xml'
+					});
+					$('#mycalendar2').monthly({
+						mode: 'picker',
+						target: '#mytarget',
+						setWidth: '250px',
+						startHidden: true,
+						showTrigger: '#mytarget',
+						stylePast: true,
+						disablePast: true
+					});
+				switch(window.location.protocol) {
+				case 'http:':
+				case 'https:':
+				// running on a server, should be good.
+				break;
+				case 'file:':
+				alert('Just a heads-up, events will not work when run locally.');
+				}
+				});
+			</script>
 
 	</body>
 </html>
