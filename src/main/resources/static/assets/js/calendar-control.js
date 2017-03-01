@@ -9,6 +9,7 @@ checkStreak.controller('ClndrCtrl', function ($scope, $http) {
 	   	.success(function(data){
 	   		$scope.goals = data;
 	   });
+}
 
   $scope.loadGoals();
 });

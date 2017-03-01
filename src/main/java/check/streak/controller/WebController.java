@@ -32,6 +32,11 @@ public class WebController {
 		return goalManager.listAllGoals();
 	}
 
+	@RequestMapping(value = "/loadFilteredGoals", method = RequestMethod.GET)
+	List<Goal> listFilteredGoals() {
+		return goalManager.listAllGoals();
+	}
+
 
 	@RequestMapping(value = "/addGoal/{goalId}", method = RequestMethod.POST)
 	Goal updateGoal(
@@ -69,5 +74,4 @@ public class WebController {
 		goalManager.updateGoal(goal);
 		return goal;
 	}
-
 }

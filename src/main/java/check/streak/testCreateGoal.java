@@ -54,7 +54,7 @@ public class testCreateGoal {
         System.out.print(nada.size());
 
         Goal goal = new Goal();
-        goal.setId("test");
+        goal.setId("12");
         goal.setName("NAdaaaaaaaaaaa");
         goal.setStartDate("");
         goal.setEndDate("");

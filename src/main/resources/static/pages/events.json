@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Drink water",
-      "startdate": "20170215",
+      "startdate": "2017-02-15",
       "enddate": "2017-2-15",
       "enddate2": "2017-3-15",
       "starttime": "12:00",
@@ -15,7 +15,7 @@
     {
       "id": 2,
       "name": "Drink water 2",
-      "startdate": "20170230",
+      "startdate": "2017-02-30",
       "enddate": "2017-2-15",
       "enddate2": "2017-3-15",
       "starttime": "12:00",
