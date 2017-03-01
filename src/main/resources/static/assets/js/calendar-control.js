@@ -5,11 +5,10 @@ var checkStreak = angular.module('checkStreak', []);
 checkStreak.controller('ClndrCtrl', function ($scope, $http) {
 
   $scope.loadGoals = function() {
-	   $http.get("getGoalsList")
+	   $http.get("loadGoalsForCalendar")
 	   	.success(function(data){
 	   		$scope.goals = data;
 	   });
 
   $scope.loadGoals();
-
 });

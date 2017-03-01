@@ -1,24 +1,14 @@
-<!DOCTYPE HTML>
-<!--
-	Big Picture by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Big Picture by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="../assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<link rel="stylesheet" href="../assets/css/monthly.css">
+		<script src="../assets/js/calendar-regular.js"></script>
 		
 	</head>
-	<body ng-controller="GoalCtrl">
-
-		<!-- Header -->
+	<body>
 			<header id="header">
 				<h1>Check & Streak</h1>
 				<nav>
@@ -36,30 +26,15 @@
 		<!-- Intro -->
 			<section id="intro" class="main style1 dark fullscreen">
 				<div class="content">
-					
-					Goal <input type="text" ng-model="goal">
-					<br>
-					Start Date
-					<div style="display:inline-block; width:250px;">
-						<input type="text" id="mytarget" value="Select Date">
-						<div class="monthly" id="mycalendar2"></div>
-					</div>
-					
-					<br>
-					End Date
-					<div style="display:inline-block; width:250px;">
-						<input type="text" id="mytarget" value="Select Date">
-						<div class="monthly" id="mycalendar2"></div>
-					</div>
-					<br>
-					Color
-					<div style="display:inline-block; width:250px;">
-						<input class="jscolor" value="ab2567" style="width:250px; align-self: right">
-					</div>
-					
-					<hr>
-					<br><button ng-click="addGoal()">Add Goal</button>
-				      
+					<tr>
+						<td><input type="text" id="input_id"></td>
+						<td><input type="text" id="input_name"></td>
+						<td><input type="text" id="input_start"></td>
+						<td><input type="text" id="input_end"></td>
+						<td><input type="text" id="input_color"></td>
+						<td><button onclick="addGoal()">Add</button></td>
+					</tr>
+
 
 				</div>
 			</section>
@@ -85,7 +60,7 @@
 			<script type="text/javascript" src="../assets/js/jquery.js"></script>
 			<script type="text/javascript" src="../assets/js/monthly.js"></script>
 			<script src="../assets/js/jscolor.js"></script>
-			
+
 			<script type="text/javascript">
 				$(window).load( function() {
 					$('#mycalendar').monthly({

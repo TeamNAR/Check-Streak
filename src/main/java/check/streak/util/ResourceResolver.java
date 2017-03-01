@@ -16,7 +16,7 @@ public class ResourceResolver {
 	 * @param userId
 	 * @return
 	 */
-	public static File getUserFile() {
+	public static File getGoalFile() {
 		File file = new File(BASE_DIR + "/" + "goal-map.json");
 		if (!file.getParentFile().exists()) {
 			file.getParentFile().mkdirs();
