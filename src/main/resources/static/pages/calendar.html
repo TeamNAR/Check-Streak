@@ -1,6 +1,7 @@
+<!DOCTYPE HTML>
 <html ng-app="checkStreak">
 	<head>
-		<title>Big Picture by HTML5 UP</title>
+		<title>Check & Streak</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -22,7 +23,7 @@
 	<body ng-controller="ClndrCtrl">
 		<!-- Header -->
 			<header id="header">
-				<h1>Check & Streak</h1>
+				<h1><a href="../index.html">Check & Streak</a></h1>
 				<nav>
 					<ul>
 						<li><a href="about.html">About</a></li>
@@ -31,7 +32,7 @@
 						<li><a href="addGoal.html">Add Goal</a></li>
 						<li><a href="stats.html">My Stats</a></li>
 						<li><a href="#">My Calendar</a></li>
-						<li><button id="popup" onclick="div_show()" style="padding-top: 2px">Add Streak</button></li>
+						<li><button id="popup" onclick="div_show()" style="padding-top: 2px">Add to Streak</button></li>
 					</ul>
 				</nav>
 			</header>
@@ -45,7 +46,7 @@
 					<div id="popupContact">
 						<!-- Contact Us Form -->
 						<form action="#" id="form" method="post" name="form" style="color:black">
-							<img id="close" src="images/close.png" onclick ="div_hide()">
+							<img id="close" src="../images/close.png" onclick ="div_hide()">
 							<h3 style="color: black">Add a Goal to Today's Streak</h3>
 								<tr ng-repeat="goal in goals">
 									<td><input type="checkbox" id="input_check"></td>
@@ -65,7 +66,7 @@
 			<footer id="footer">
 				<!-- Menu -->
 					<ul class="menu">
-						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+						<li>&copy; TeamNAR</li>
 					</ul>
 
 			</footer>
