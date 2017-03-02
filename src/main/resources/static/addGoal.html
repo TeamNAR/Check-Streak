@@ -1,5 +1,3 @@
-
-
 <html>
 	<head>
 		<title>Check & Streak</title>
@@ -35,6 +33,32 @@
 					<input type="text" id="input_start">
 					<input type="text" id="input_end">
 					<input type="text" id="input_color">
+					
+<!-- Clender work -->
+<!--
+ID  <input type="text" ng-model="ID">
+Goal <input type="text" ng-model="goal">
+<br>
+Start Date
+<div style="display:inline-block; width:250px;">
+<input type="text" id="mytarget1" value="Select Date">
+<div class="monthly" id="mycalendar1"></div>
+</div>
+
+<br>
+End Date
+<div style="display:inline-block; width:250px;">
+<input type="text" id="mytarget2" value="Select Date">
+<div class="monthly" id="mycalendar2"></div>
+</div>
+<br>
+Select your favorite color:
+<div style="display:inline-block; width:250px;">
+<input class="jscolor" value="ab2567">
+</div>
+
+<hr>
+-->
 					<button onclick="addGoal()">Add Goal</button>
 				</div>
 			</section>
@@ -63,12 +87,24 @@
 			<script src="assets/js/jscolor.js"></script>
 
 			<script type="text/javascript">
-					$('#mycalendar2').monthly({
+					$('#mycalendar1').monthly({
 						mode: 'picker',
-						target: '#mytarget',
+						target: '#mytarget1',
 						setWidth: '250px',
 						startHidden: true,
-						showTrigger: '#mytarget',
+						showTrigger: '#mytarget1',
+						stylePast: true,
+						disablePast: true
+					});
+			</script>
+
+				<script type="text/javascript">
+					$('#mycalendar2').monthly({
+						mode: 'picker',
+						target: '#mytarget2',
+						setWidth: '250px',
+						startHidden: true,
+						showTrigger: '#mytarget2',
 						stylePast: true,
 						disablePast: true
 					});
@@ -76,5 +112,3 @@
 
 	</body>
 </html>
-
-
