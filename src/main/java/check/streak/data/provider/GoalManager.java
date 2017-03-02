@@ -12,6 +12,6 @@ public interface GoalManager {
 
 	public List<Goal> listAllGoals();
 
-	public GoalMap listAllGoalsCal();
+	public List<Goal> listFilteredGoals();
 
 }

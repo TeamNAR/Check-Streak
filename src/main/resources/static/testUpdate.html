@@ -1,0 +1,29 @@
+<html ng-app="checkStreak">
+<!-- This page uses AngularJS -->
+<head>
+    <title>CS580 Demo HomePage using AngularJS</title>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="assets/js/calendar-control.js"></script>
+
+</head>
+
+<body ng-controller="ClndrCtrl">
+<div>
+    <div>
+        <label>Goals List</label>
+        <table border="1">
+            <tr ng-repeat="goal in filteredGoals">
+                <td><input type="checkbox" id="input_check"></td>
+                <td>{{goal.name}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr>
+
+</div>
+
+</body>
+
+</html>

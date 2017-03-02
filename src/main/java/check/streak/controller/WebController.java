@@ -34,7 +34,7 @@ public class WebController {
 
 	@RequestMapping(value = "/loadFilteredGoals", method = RequestMethod.GET)
 	List<Goal> listFilteredGoals() {
-		return goalManager.listAllGoals();
+		return goalManager.listFilteredGoals();
 	}
 
 
@@ -59,19 +59,4 @@ public class WebController {
 		return goal;
 	}
 
-	@RequestMapping(value = "/testAdd", method = RequestMethod.GET)
-	Goal createUser() {
-		Goal goal = new Goal();
-		goal.setId("12");
-		goal.setName("1222kjflkjads;gjkfslerkjgnkngvlrhgskr.nrnv");
-		goal.setStartDate("");
-		goal.setEndDate("");
-		goal.setEndDate2(" ");
-		goal.setStartTime(" ");
-		goal.setEndTime("");
-		goal.setColor("");
-		goal.setUrl("");
-		goalManager.updateGoal(goal);
-		return goal;
-	}
 }
