@@ -23,7 +23,7 @@
 	<body ng-controller="ClndrCtrl">
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="../index.html">Check & Streak</a></h1>
+				<h1><a href="index.html">Check & Streak</a></h1>
 				<nav>
 					<ul>
 						<li><a href="about.html">About</a></li>
@@ -48,7 +48,7 @@
 						<form action="#" id="form" method="post" name="form" style="color:black">
 							<img id="close" src="../images/close.png" onclick ="div_hide()">
 							<h3 style="color: black">Add a Goal to Today's Streak</h3>
-								<tr ng-repeat="goal in goals">
+								<tr ng-repeat="goal in filteredGoals">
 									<td><input type="checkbox" id="input_check"></td>
 				                    <td>{{goal.name}}</td>
 				                </tr>

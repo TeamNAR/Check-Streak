@@ -70,34 +70,16 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public List<Goal> listFilteredGoals() {
-/*		File goalFile =  ResourceResolver.getGoalFile();
-
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-		Date date = new Date();
-		String s = dateFormat.format(date);
-
-		Filter cheapFictionFilter = filter(
-				where("startdate").eq(s)
-		);
-
-		List<Goal> goalMap  = null;
-		try {
-			goalMap = parse(goalFile).read("$.[?]", cheapFictionFilter);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-
-		File goalFile =  new File("/Users/Nada/Desktop/Check-Streak/src/main/resources/static/pages/events.json");
+		File goalFile =  new File("/Users/Nada/Desktop/Check-Streak/src/main/resources/static/events.json");
 		//File goalFile =  ResourceResolver.getGoalFile();
 
-		//"/Users/Nada/Desktop/Check-Streak/src/main/resources/static/pages/events.json"
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date date = new Date();
 		String s = dateFormat.format(date);
-		System.out.print(s);
+		//System.out.println(s);
 
-		Filter cheapFictionFilter = filter(where("startdate").eq(s));
+		Filter cheapFictionFilter = filter(where("startdate").lte(s));
 
 		List<Goal> goalMap  = null;
 		try {
@@ -105,9 +87,6 @@ public class FSGoalManager implements GoalManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		//System.out.print(goalMap.size());
-		//return new ArrayList<Goal>(goalMap.values());
 
 		return goalMap;
 	}
