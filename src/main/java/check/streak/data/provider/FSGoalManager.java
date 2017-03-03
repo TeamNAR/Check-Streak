@@ -70,7 +70,7 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public List<Goal> listFilteredGoals() {
-		File goalFile =  new File("/Users/Nada/Desktop/Check-Streak/src/main/resources/static/events.json");
+		File goalFile =  new File("/Users/rashaalghofaili/Desktop/NAR/Check-Streak/src/main/resources/static/events.json");
 		//File goalFile =  ResourceResolver.getGoalFile();
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
