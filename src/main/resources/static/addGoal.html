@@ -4,10 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/monthly.css">
-		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="assets/js/calendar-regular.js"></script>
-		
+		<link rel="stylesheet" href="assets/css/monthly2.css">		
 	</head>
 	<body>
 			<header id="header">
@@ -28,37 +25,34 @@
 		<!-- Intro -->
 			<section id="intro" class="main style1 dark fullscreen">
 				<div class="content">
+					<!--
 					<input type="text" id="input_id">
 					<input type="text" id="input_name">
 					<input type="text" id="input_start">
 					<input type="text" id="input_end">
-					<input type="text" id="input_color">
+					<input type="text" id="input_color"> -->
 					
-<!-- Clender work -->
-<!--
-ID  <input type="text" ng-model="ID">
-Goal <input type="text" ng-model="goal">
-<br>
-Start Date
-<div style="display:inline-block; width:250px;">
-<input type="text" id="mytarget1" value="Select Date">
-<div class="monthly" id="mycalendar1"></div>
-</div>
-
-<br>
-End Date
-<div style="display:inline-block; width:250px;">
-<input type="text" id="mytarget2" value="Select Date">
-<div class="monthly" id="mycalendar2"></div>
-</div>
-<br>
-Select your favorite color:
-<div style="display:inline-block; width:250px;">
-<input class="jscolor" value="ab2567">
-</div>
-
-<hr>
--->
+					<!-- Clender work -->
+					
+					ID  <input type="text" id="input_id">
+					Goal <input type="text" id="input_name"><br>
+					Start Date
+					<div style="display:inline-block; width:250px;">
+						<input type="text" id="input_start" value="Select Start Date">
+						<div class="monthly" id="calendarPicker1"></div>
+					</div><br>
+					
+					End Date
+					<div style="display:inline-block; width:250px;">
+						<input type="text" id="input_end" value="Select End Date">
+						<div class="monthly" id="calendarPicker2"></div>
+					</div><br>
+					
+					Color
+					<div style="display:inline-block; width:250px;">
+						<input class="jscolor" id="input_color" value="ab2567" >
+					</div><hr>
+					
 					<button onclick="addGoal()">Add Goal</button>
 				</div>
 			</section>
@@ -81,30 +75,31 @@ Select your favorite color:
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../assets/js/main.js"></script>
-			<script type="text/javascript" src="../assets/js/jquery.js"></script>
-			<script type="text/javascript" src="../assets/js/monthly.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="assets/js/jquery.js"></script>
+			<script src="assets/js/monthly.js"></script>
 			<script src="assets/js/jscolor.js"></script>
-
+			<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+			<script src="assets/js/calendar-regular.js"></script>
+		
 			<script type="text/javascript">
-					$('#mycalendar1').monthly({
+					$('#calendarPicker1').monthly({
 						mode: 'picker',
-						target: '#mytarget1',
+						target: '#input_start',
 						setWidth: '250px',
+						height: '200px',
 						startHidden: true,
-						showTrigger: '#mytarget1',
+						showTrigger: '#input_start',
 						stylePast: true,
 						disablePast: true
 					});
-			</script>
-
-				<script type="text/javascript">
-					$('#mycalendar2').monthly({
+					
+					$('#calendarPicker2').monthly({
 						mode: 'picker',
-						target: '#mytarget2',
+						target: '#input_end',
 						setWidth: '250px',
 						startHidden: true,
-						showTrigger: '#mytarget2',
+						showTrigger: '#input_end',
 						stylePast: true,
 						disablePast: true
 					});
