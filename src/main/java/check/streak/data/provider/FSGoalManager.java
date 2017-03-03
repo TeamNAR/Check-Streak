@@ -26,6 +26,7 @@ public class FSGoalManager implements GoalManager {
 	private GoalMap getGoalMap() {
 		GoalMap goalMap = null;
 		File goalFile =  ResourceResolver.getGoalFile();
+		//File goalFile =  new File("/Users/Nada/Desktop/Check-Streak/src/main/resources/static/events.json");
 		if (goalFile.exists()) {
 			try {
 				goalMap = JSON.readValue(goalFile, GoalMap.class);
@@ -56,6 +57,13 @@ public class FSGoalManager implements GoalManager {
 	public void updateGoal(Goal goal) {
 		GoalMap goalMap = getGoalMap();
 		goalMap.put(goal.getId(), goal);
+		persistGoalMap(goalMap);
+	}
+
+	@Override
+	public void deleteGoal(String userId) {
+		GoalMap goalMap = getGoalMap();
+		goalMap.remove(userId);
 		persistGoalMap(goalMap);
 	}
 

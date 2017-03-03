@@ -28,3 +28,19 @@ function addGoal() {
 		alert("Invalid goal Id");
 	}
 }
+
+function deleteUser(goalId) {
+	$.ajax(
+			{
+				type : "DELETE",
+				url  : "/deleteGoal/" + goalId,
+				data : {
+				},
+				success : function(result) {
+					location.reload();
+				},
+				error: function (jqXHR, exception) {
+					alert("Failed to delete the photo.");
+				}
+			});
+}

@@ -16,6 +16,20 @@ checkStreak.controller('ClndrCtrl', function ($scope, $http) {
         });
     }
 
+    $scope.updateGoal = function(goalId) {
+        $http.get("updateGoal/" + goalId)
+        .success(function(data){
+            $scope.loadGoals();
+        });
+    }
+
+    $scope.deleteGoal = function(goalId) {
+  	  $http.delete("deleteGoal/" + goalId)
+  	  	.success(function(data){
+  	  		$scope.loadGoals();
+  	  	});
+    }
+
   $scope.loadGoals();
-  $scope.loadFilteredGoals();
+  //$scope.loadFilteredGoals();
 });

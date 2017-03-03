@@ -10,6 +10,8 @@ public interface GoalManager {
 
 	public void updateGoal(Goal goal);
 
+	public void deleteGoal(String goalId);
+
 	public List<Goal> listAllGoals();
 
 	public List<Goal> listFilteredGoals();
