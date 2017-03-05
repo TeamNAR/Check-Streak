@@ -6,10 +6,11 @@ Check & Streak is a simple webservice ...
   - ...
 
 # Main Features!
-  - ...
-  - ...
+  - Adding goals and dispaly them on the calender. 
+  - Check and streak goals every day. 
 
 ### How To Use!
+It is easy to use just enter the add Goal page and add a goal to achive 
 
 ### Tech
 Check & Streak uses a number of open source projects to work properly:
@@ -21,9 +22,9 @@ Check & Streak uses a number of open source projects to work properly:
 
 
 ### ToDos
-
- - ...
- - ...
+ - Display the user activities in graphs in the MyStats.html.
+ - Add Log in Feature  - Enhance the calender and make it more user firendly.
+ - Add a log in feature.
 
 ### The Team
 
