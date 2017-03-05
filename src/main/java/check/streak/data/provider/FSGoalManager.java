@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import check.streak.data.Goal;
 import check.streak.data.GoalMap;
 import check.streak.util.ResourceResolver;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.jayway.jsonpath.Filter;
 import net.minidev.json.JSONObject;
 
@@ -41,6 +44,23 @@ public class FSGoalManager implements GoalManager {
 		}
 		return goalMap;
 	}
+
+	private List<Goal> getGoalMap2() {
+		File goalFile =  ResourceResolver.getGoalFile();
+		List<Goal> goalMap = null;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			JsonNode response = mapper.readTree(goalFile).path("monthly");
+			CollectionType collectionType =  TypeFactory
+					.defaultInstance()
+					.constructCollectionType(List.class, Goal.class);
+
+			goalMap = mapper.reader(collectionType).readValue(response);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return goalMap;
+	}
 	
 	private void persistGoalMap(JSONObject goalMap) {
 		File goalFile =  ResourceResolver.getGoalFile();
@@ -59,13 +79,16 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public void updateGoal(Goal goal) {
-		List<Goal> goalMap = listAllGoals();
+		List<Goal> goalMap = getGoalMap2();
 
-/*		for(Goal myGoal : goalMap){
+		Goal removeMe = null;
+
+		for(Goal myGoal : goalMap){
 			if(myGoal.getId().equals(goal.getId()))
-				goalMap.remove(myGoal);
+				removeMe = myGoal;
 		}
-*/
+
+		goalMap.remove(removeMe);
 		goalMap.add(goal);
 
 		JSONObject JSONGoal = new JSONObject();
@@ -76,21 +99,14 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public void deleteGoal(String userId) {
-		GoalMap goalMap = getGoalMap();
-		goalMap.remove(userId);
+		//GoalMap goalMap = getGoalMap();
+		//goalMap.remove(userId);
 		//persistGoalMap(goalMap);
 	}
 
 	@Override
 	public List<Goal> listAllGoals() {
-		Filter cheapFictionFilter = filter(where("id").ne(0));
-		File goalFile =  ResourceResolver.getGoalFile();
-		ArrayList<Goal> goalMap  = null;
-		try {
-			goalMap = parse(goalFile).read("$.monthly[?]", cheapFictionFilter);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		List<Goal> goalMap = getGoalMap2();
 		return goalMap;
 	}
 
