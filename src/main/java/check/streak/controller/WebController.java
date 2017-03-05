@@ -57,7 +57,7 @@ public class WebController {
 		Date date = new Date();
 		String s = dateFormat.format(date);
 
-		goal.setEndDate(s);
+		goal.setEndDate(goalStartDate);
 		goal.setEndDate2(goalEndDate);
 		goal.setStartTime("");
 		goal.setEndTime("");
