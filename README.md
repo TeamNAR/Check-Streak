@@ -27,8 +27,10 @@ Check & Streak uses a number of open source projects to work properly:
 
 ### The Team
 
- - ...
- - ...
+ - Nada Alghofaili
+ - Rasha Alghofaili
+ - Ahlam Almusallam
+ - Amani Zamzami 
 
 [//]: # (These are reference links used in the body of this note and get)
 
