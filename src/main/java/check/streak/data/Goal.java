@@ -1,20 +1,18 @@
 package check.streak.data;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Goal {
 
     private String id;
     private String name;
-    private String startDate;
-    private String endDate;
-    private String endDate2;
-    private String startTime;
-    private String endTime;
+    private String startdate;
+    private String enddate;
+    private String enddate2;
+    private String starttime;
+    private String endtime;
     private String color;
     private String url;
-    
-    private String creationTime = new Date(System.currentTimeMillis()).toString();
 
     public String getId() {
         return id;
@@ -31,45 +29,55 @@ public class Goal {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	@JsonProperty("startdate")
 	public String getStartDate() {
-		return startDate;
+		return startdate;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	@JsonProperty("startdate")
+	public void setStartDate(String startdate) {
+		this.startdate = startdate;
 	}
 
+	@JsonProperty("enddate")
 	public String getEndDate() {
-		return endDate;
+		return enddate;
 	}
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	@JsonProperty("enddate")
+	public void setEndDate(String enddate) {
+		this.enddate = enddate;
 	}
 
+	@JsonProperty("enddate2")
 	public String getEndDate2() {
-		return endDate2;
+		return enddate2;
 	}
 
-	public void setEndDate2(String endDate2) {
-		this.endDate2 = endDate2;
+	@JsonProperty("enddate2")
+	public void setEndDate2(String enddate2) {
+		this.enddate2 = enddate2;
 	}
 
+	@JsonProperty("starttime")
 	public String getStartTime() {
-		return startTime;
+		return starttime;
 	}
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+	@JsonProperty("starttime")
+	public void setStartTime(String starttime) {
+		this.starttime = starttime;
 	}
 
+	@JsonProperty("endtime")
 	public String getEndTime() {
-		return endTime;
+		return endtime;
 	}
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+	@JsonProperty("endtime")
+	public void setEndTime(String endtime) {
+		this.endtime = endtime;
 	}
 
 	public String getColor() {
@@ -86,13 +94,5 @@ public class Goal {
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-
-	public String getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(String creationTime) {
-		this.creationTime = creationTime;
 	}
 }

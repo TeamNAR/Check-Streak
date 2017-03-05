@@ -57,11 +57,11 @@ public class WebController {
 		Date date = new Date();
 		String s = dateFormat.format(date);
 
-		goal.setEndDate(s);
+		goal.setEndDate(goalEndDate);
 		goal.setEndDate2(goalEndDate);
 		goal.setStartTime("");
 		goal.setEndTime("");
-		goal.setColor(goalColor);
+		goal.setColor("#"+goalColor);
 		goal.setUrl("");
 		goalManager.updateGoal(goal);
 		return goal;
@@ -70,7 +70,14 @@ public class WebController {
 	@RequestMapping(value = "/updateGoal/{goalId}", method = RequestMethod.GET)
 	Goal updateGoal(
 			@PathVariable("goalId") String goalId) {
-		Goal goal = goalManager.getGoal(goalId);
+		Goal goal = null;
+
+		List<Goal> goalMap = goalManager.listAllGoals();
+
+		for(Goal myGoal : goalMap){
+			if(myGoal.getId().equals(goalId))
+				goal = myGoal;
+		}
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();

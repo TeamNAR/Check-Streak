@@ -4,37 +4,23 @@
       "id": 1,
       "name": "Drink water",
       "startdate": "2017-02-15",
-      "enddate": "2017-2-15",
+      "enddate": "2017-2-16",
       "enddate2": "2017-3-15",
       "starttime": "12:00",
       "endtime": "2:00",
       "color": "#EF44EF",
       "url": ""
     },
-    
     {
-      "id": 2,
-      "name": "Drink water 2",
-      "startdate": "2017-02-30",
-      "enddate": "2017-2-15",
-      "enddate2": "2017-3-15",
-      "starttime": "12:00",
-      "endtime": "2:00",
-      "color": "#EF44EF",
-      "url": ""
-    },
-
-    {
-      "id": 3,
-      "name": "Drink water 3",
-      "startdate": "2017-01-05",
-      "enddate": "2017-2-15",
-      "enddate2": "2017-3-15",
-      "starttime": "12:00",
-      "endtime": "2:00",
-      "color": "#EF44EF",
-      "url": ""
+      "id": "12",
+      "name": "12",
+      "color": "6FA3AB",
+      "url": "",
+      "endTime": "",
+      "startTime": "",
+      "startdate": "2017-03-03",
+      "enddate": "2017-03-04",
+      "enddate2": "2017-03-07"
     }
-    
   ]
 }

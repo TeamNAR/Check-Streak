@@ -14,6 +14,7 @@ import check.streak.data.Goal;
 import check.streak.data.GoalMap;
 import check.streak.util.ResourceResolver;
 import com.jayway.jsonpath.Filter;
+import net.minidev.json.JSONObject;
 
 import static com.jayway.jsonpath.Criteria.where;
 import static com.jayway.jsonpath.Filter.filter;
@@ -23,10 +24,12 @@ public class FSGoalManager implements GoalManager {
 
 	private static final ObjectMapper JSON = new ObjectMapper();
 
+	public FSGoalManager() {
+	}
+
 	private GoalMap getGoalMap() {
 		GoalMap goalMap = null;
-		File goalFile =  ResourceResolver.getGoalFile();
-		//File goalFile =  new File("/Users/Nada/Desktop/Check-Streak/src/main/resources/static/events.json");
+		File goalFile = ResourceResolver.getGoalFile();
 		if (goalFile.exists()) {
 			try {
 				goalMap = JSON.readValue(goalFile, GoalMap.class);
@@ -39,9 +42,10 @@ public class FSGoalManager implements GoalManager {
 		return goalMap;
 	}
 	
-	private void persistGoalMap(GoalMap userMap) {
+	private void persistGoalMap(JSONObject goalMap) {
+		File goalFile =  ResourceResolver.getGoalFile();
 		try {
-			JSON.writeValue(ResourceResolver.getGoalFile(), userMap);
+			JSON.writeValue(goalFile, goalMap);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,31 +59,44 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public void updateGoal(Goal goal) {
-		GoalMap goalMap = getGoalMap();
-		goalMap.put(goal.getId(), goal);
-		persistGoalMap(goalMap);
+		List<Goal> goalMap = listAllGoals();
+
+/*		for(Goal myGoal : goalMap){
+			if(myGoal.getId().equals(goal.getId()))
+				goalMap.remove(myGoal);
+		}
+*/
+		goalMap.add(goal);
+
+		JSONObject JSONGoal = new JSONObject();
+		JSONGoal.put("monthly", goalMap);
+
+		persistGoalMap(JSONGoal);
 	}
 
 	@Override
 	public void deleteGoal(String userId) {
 		GoalMap goalMap = getGoalMap();
 		goalMap.remove(userId);
-		persistGoalMap(goalMap);
+		//persistGoalMap(goalMap);
 	}
 
 	@Override
 	public List<Goal> listAllGoals() {
-		GoalMap goalMap = getGoalMap();
-		return new ArrayList<Goal>(goalMap.values());
-	}
-
-	public FSGoalManager() {
+		Filter cheapFictionFilter = filter(where("id").ne(0));
+		File goalFile =  ResourceResolver.getGoalFile();
+		ArrayList<Goal> goalMap  = null;
+		try {
+			goalMap = parse(goalFile).read("$.monthly[?]", cheapFictionFilter);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return goalMap;
 	}
 
 	@Override
 	public List<Goal> listFilteredGoals() {
-		File goalFile =  new File("/Users/rashaalghofaili/Desktop/NAR/Check-Streak/src/main/resources/static/events.json");
-		//File goalFile =  ResourceResolver.getGoalFile();
+		File goalFile =  ResourceResolver.getGoalFile();
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
