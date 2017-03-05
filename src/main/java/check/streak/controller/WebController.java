@@ -57,7 +57,7 @@ public class WebController {
 		Date date = new Date();
 		String s = dateFormat.format(date);
 
-		goal.setEndDate(goalEndDate);
+		goal.setEndDate(s);
 		goal.setEndDate2(goalEndDate);
 		goal.setStartTime("");
 		goal.setEndTime("");
@@ -70,14 +70,7 @@ public class WebController {
 	@RequestMapping(value = "/updateGoal/{goalId}", method = RequestMethod.GET)
 	Goal updateGoal(
 			@PathVariable("goalId") String goalId) {
-		Goal goal = null;
-
-		List<Goal> goalMap = goalManager.listAllGoals();
-
-		for(Goal myGoal : goalMap){
-			if(myGoal.getId().equals(goalId))
-				goal = myGoal;
-		}
+		Goal goal = goalManager.getGoal(goalId);
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -86,12 +79,5 @@ public class WebController {
 		goal.setEndDate(s);
 		goalManager.updateGoal(goal);
 		return goal;
-	}
-
-	@RequestMapping(value = "/deleteGoal/{goalId}", method = RequestMethod.DELETE)
-	void deleteGoal(
-			@PathVariable("goalId") String goalId) {
-		//Goal goal = goalManager.getGoal(goalId);
-		goalManager.deleteGoal(goalId);
 	}
 }

@@ -30,22 +30,7 @@ public class FSGoalManager implements GoalManager {
 	public FSGoalManager() {
 	}
 
-	private GoalMap getGoalMap() {
-		GoalMap goalMap = null;
-		File goalFile = ResourceResolver.getGoalFile();
-		if (goalFile.exists()) {
-			try {
-				goalMap = JSON.readValue(goalFile, GoalMap.class);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			goalMap = new GoalMap();
-		}
-		return goalMap;
-	}
-
-	private List<Goal> getGoalMap2() {
+	private List<Goal> getGoalMap() {
 		File goalFile =  ResourceResolver.getGoalFile();
 		List<Goal> goalMap = null;
 		try {
@@ -73,13 +58,18 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public Goal getGoal(String goalId) {
-		GoalMap goalMap = getGoalMap();
-		return goalMap.get(goalId);
+		List<Goal> goalMap = getGoalMap();
+		Goal goal = null;
+		for(Goal myGoal : goalMap){
+			if(myGoal.getId().equals(goalId))
+				goal = myGoal;
+		}
+		return goal;
 	}
 
 	@Override
 	public void updateGoal(Goal goal) {
-		List<Goal> goalMap = getGoalMap2();
+		List<Goal> goalMap = getGoalMap();
 
 		Goal removeMe = null;
 
@@ -106,7 +96,7 @@ public class FSGoalManager implements GoalManager {
 
 	@Override
 	public List<Goal> listAllGoals() {
-		List<Goal> goalMap = getGoalMap2();
+		List<Goal> goalMap = getGoalMap();
 		return goalMap;
 	}
 
