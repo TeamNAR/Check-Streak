@@ -82,39 +82,12 @@ public class FSGoalManager implements GoalManager {
 
 		Goal removeMe = null;
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String today22 = dateFormat.format(new Date());
-		Date today = null;
-		Date date2 = null;
-
-		Boolean skipped = false;
-		try {
-			today = dateFormat.parse(dateFormat.format(new Date()));
-			for(Goal myGoal : goalMap){
-				if(myGoal.getId().equals(goal.getId()))
-					date2 = dateFormat.parse(myGoal.getEndDate());
-					int days = Days.daysBetween(new DateTime(date2), new DateTime(today)).getDays();
-					if(days > 1){
-						skipped = true;
-					}
-					else{
-						skipped = false;
-						//removeMe = myGoal;
-					}
+		for(Goal myGoal : goalMap){
+			if(myGoal.getId().equals(goal.getId()))
 				removeMe = myGoal;
-			}
-		} catch (ParseException e) {
-			e.printStackTrace();
 		}
 
-		if(skipped){
-			goal.setId(removeMe.getId()+"R");
-			goal.setStartDate(today22);
-		}
-		else{
-			goalMap.remove(removeMe);
-		}
-
+		goalMap.remove(removeMe);
 		goalMap.add(goal);
 
 		JSONObject JSONGoal = new JSONObject();

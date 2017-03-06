@@ -12,11 +12,4 @@ public class ResourceResolver {
 		}
 		return file;
 	}
-
-	public static File getGoalFile2() {
-		ClassLoader classLoader = ResourceResolver.class.getClassLoader();
-		File file = new File(classLoader.getResource("static/events.json").getFile());
-
-		return file;
-	}
 }

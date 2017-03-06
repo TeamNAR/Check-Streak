@@ -14,10 +14,7 @@ import java.io.*;
 import java.nio.channels.FileChannel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import check.streak.data.provider.GoalManager;
 
@@ -88,11 +85,12 @@ public class WebController {
 	String getEventsPath() throws IOException {
 
 		File file1 = ResourceResolver.getGoalFile();
-		File file2 = ResourceResolver.getGoalFile2();
+/*		File file2 = ResourceResolver.getGoalFile2();
 		FileChannel src = new FileInputStream(file1).getChannel();
 		FileChannel dest = new FileOutputStream(file2).getChannel();
-		dest.transferFrom(src, 0, src.size());
+		dest.transferFrom(src, 0, src.size());*/
+		String content = new Scanner(file1).useDelimiter("\\Z").next();
 
-		return ResourceResolver.getGoalFile().getPath();
+		return content;
 	}
 }
