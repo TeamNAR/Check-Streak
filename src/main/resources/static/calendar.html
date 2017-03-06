@@ -102,15 +102,13 @@
 					return succeed;
 				}
 
-				var filePath =  ajaxRefresh("/getEventsPath");
-				var filename = filePath.replace(/^.*[\\\/]/, '');
+				ajaxRefresh("/getEventsPath");
 
 				$('#mycalendar').monthly({
 					mode: 'event',
-					jsonUrl: filename,
+					jsonUrl: 'events.json',
 					dataType: 'json'
 				});
-				
 			</script>
 <script src="assets/js/Testpop.js"></script>
 			<script src="assets/js/my_js.js"></script>

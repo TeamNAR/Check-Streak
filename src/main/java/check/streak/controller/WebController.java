@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.*;
+import java.nio.channels.FileChannel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -83,7 +85,14 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "/getEventsPath", method = RequestMethod.GET)
-	String getEventsPath() {
+	String getEventsPath() throws IOException {
+
+		File file1 = ResourceResolver.getGoalFile();
+		File file2 = ResourceResolver.getGoalFile2();
+		FileChannel src = new FileInputStream(file1).getChannel();
+		FileChannel dest = new FileOutputStream(file2).getChannel();
+		dest.transferFrom(src, 0, src.size());
+
 		return ResourceResolver.getGoalFile().getPath();
 	}
 }
