@@ -20,6 +20,7 @@ checkStreak.controller('ClndrCtrl', function ($scope, $http) {
         $http.get("updateGoal/" + goalId)
         .success(function(data){
             $scope.loadGoals();
+              window.location = "/calendar.html"
         });
     }
 
