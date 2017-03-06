@@ -18,7 +18,7 @@ function addGoal() {
 						"color" : goalColor
 					},
 					success : function(result) {
-						location.reload();
+						window.location = "/calendar.html"
 					},
 					error: function (jqXHR, exception) {
 						alert("Failed to add the user. Please check the inputs." + jqXHR.textStatus);
