@@ -2,6 +2,7 @@ package check.streak.controller;
 
 import check.streak.data.Goal;
 import check.streak.data.GoalMap;
+import check.streak.util.ResourceResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,5 +80,10 @@ public class WebController {
 		goal.setEndDate(s);
 		goalManager.updateGoal(goal);
 		return goal;
+	}
+
+	@RequestMapping(value = "/getEventsPath", method = RequestMethod.GET)
+	String getEventsPath() {
+		return ResourceResolver.getGoalFile().getPath();
 	}
 }

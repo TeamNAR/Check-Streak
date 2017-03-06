@@ -78,12 +78,27 @@
 			<script type="text/javascript" src="assets/js/jquery.js"></script>
 			<script type="text/javascript" src="assets/js/monthly.js"></script>
 			<script type="text/javascript">
-			
+
+				function ajaxRefresh(actionUrl) {
+					var succeed = false;
+
+					$.ajax({
+					async: false,
+					url: actionUrl,
+					success: function(result) {
+						 succeed = result;
+					}});
+
+					return succeed;
+				}
+
+				var filePath =  ajaxRefresh("/getEventsPath");
+				var filename = filePath.replace(/^.*[\\\/]/, '');
+
 				$('#mycalendar').monthly({
 					mode: 'event',
-					jsonUrl: 'events.json',
+					jsonUrl: filename,
 					dataType: 'json'
-					//xmlUrl: 'events.xml'
 				});
 				
 			</script>
