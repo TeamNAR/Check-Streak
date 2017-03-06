@@ -116,7 +116,7 @@ public class FSGoalManager implements GoalManager {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String today = dateFormat.format(new Date());
 
-		Filter cheapFictionFilter = filter(where("startdate").lt(today).and("enddate2").gte(today));
+		Filter cheapFictionFilter = filter(where("startdate").lt(today).and("enddate2").gte(today).and("enddate").lt(today));
 
 		List<Goal> goalMap  = null;
 		try {
