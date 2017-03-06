@@ -31,5 +31,5 @@ checkStreak.controller('ClndrCtrl', function ($scope, $http) {
     }
 
   $scope.loadGoals();
-  //$scope.loadFilteredGoals();
+  $scope.loadFilteredGoals();
 });

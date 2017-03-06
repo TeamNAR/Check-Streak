@@ -55,7 +55,7 @@
 
 							<h3 style="color: black">Add a Goal to Today's Streak</h3>
 				            <table>
-				                <tr ng-repeat="goal in goals">
+				                <tr ng-repeat="goal in filteredGoals">
 				                    <td>{{goal.name}}</td>
 									<td><button ng-click="updateGoal(goal.id)">Add</button></td>
 				                </tr>
