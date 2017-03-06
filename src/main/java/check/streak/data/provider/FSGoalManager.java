@@ -3,6 +3,7 @@ package check.streak.data.provider;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,8 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.jayway.jsonpath.Filter;
 import net.minidev.json.JSONObject;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import static com.jayway.jsonpath.Criteria.where;
 import static com.jayway.jsonpath.Filter.filter;
@@ -79,12 +82,39 @@ public class FSGoalManager implements GoalManager {
 
 		Goal removeMe = null;
 
-		for(Goal myGoal : goalMap){
-			if(myGoal.getId().equals(goal.getId()))
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String today22 = dateFormat.format(new Date());
+		Date today = null;
+		Date date2 = null;
+
+		Boolean skipped = false;
+		try {
+			today = dateFormat.parse(dateFormat.format(new Date()));
+			for(Goal myGoal : goalMap){
+				if(myGoal.getId().equals(goal.getId()))
+					date2 = dateFormat.parse(myGoal.getEndDate());
+					int days = Days.daysBetween(new DateTime(date2), new DateTime(today)).getDays();
+					if(days > 1){
+						skipped = true;
+					}
+					else{
+						skipped = false;
+						//removeMe = myGoal;
+					}
 				removeMe = myGoal;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 
-		goalMap.remove(removeMe);
+		if(skipped){
+			goal.setId(removeMe.getId()+"R");
+			goal.setStartDate(today22);
+		}
+		else{
+			goalMap.remove(removeMe);
+		}
+
 		goalMap.add(goal);
 
 		JSONObject JSONGoal = new JSONObject();
