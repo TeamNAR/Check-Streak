@@ -31,18 +31,24 @@ public class FSGoalManager implements GoalManager {
 	}
 
 	private List<Goal> getGoalMap() {
-		File goalFile =  ResourceResolver.getGoalFile();
 		List<Goal> goalMap = null;
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			JsonNode response = mapper.readTree(goalFile).path("monthly");
-			CollectionType collectionType =  TypeFactory
-					.defaultInstance()
-					.constructCollectionType(List.class, Goal.class);
+		File goalFile =  ResourceResolver.getGoalFile();
+		if (goalFile.exists()) {
+			// read the file and convert the JSON content
+			// to the UserMap object
+			try {
+				ObjectMapper mapper = new ObjectMapper();
+				JsonNode response = mapper.readTree(goalFile).path("monthly");
+				CollectionType collectionType =  TypeFactory
+						.defaultInstance()
+						.constructCollectionType(List.class, Goal.class);
 
-			goalMap = mapper.reader(collectionType).readValue(response);
-		} catch (IOException e) {
-			e.printStackTrace();
+				goalMap = mapper.reader(collectionType).readValue(response);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			goalMap = new ArrayList<Goal>();
 		}
 		return goalMap;
 	}
